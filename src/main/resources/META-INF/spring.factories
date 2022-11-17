@@ -1,0 +1,10 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.wingedtech.common.mongodb.autoconfigure.multitenancy.MongoMultiTenantConfiguration,\
+  com.wingedtech.common.storage.store.mongo.MongoObjectStorageItemStoreConfiguration,\
+  com.wingedtech.common.mongodb.autoconfigure.config.MongoConfigProviderConfiguration,\
+  com.wingedtech.common.mongodb.autoconfigure.generalenum.GeneralEnumerationConfiguration,\
+  com.wingedtech.common.mongodb.autoconfigure.holiday.HolidayConfiguration,\
+  com.wingedtech.common.mongodb.autoconfigure.service.ObjectLogServiceAutoConfiguration,\
+  com.wingedtech.common.mongodb.autoconfigure.log.MongoOperationLogAutoConfiguration,\
+  com.wingedtech.common.mongodb.autoconfigure.analytics.MongoAnalyticsAutoConfiguration,\
+  com.wingedtech.common.mongodb.autoconfigure.security.token.MongodbTokenStoreConfiguration

@@ -1,0 +1,12 @@
+winged:
+  multitenancy:
+    enabled: true
+    information:
+      tenants:
+        - id: master
+          name: master
+        - id: tenant1
+          name: Tenant1
+          subDomain: tenant1
+          properties:
+            mongo: mongodb://localhost:27017

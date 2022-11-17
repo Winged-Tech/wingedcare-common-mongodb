@@ -1,0 +1,9 @@
+winged:
+  syslog:
+    enabled: mongo
+
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017
+      database: wingedcare_common

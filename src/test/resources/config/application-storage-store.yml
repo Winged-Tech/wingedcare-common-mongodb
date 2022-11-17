@@ -1,0 +1,10 @@
+winged:
+  oss:
+    config:
+      provider: file
+      resources:
+        - resource-name: store
+          prefix: stores
+          append-object-id: true
+          store: true
+          storage-type: PRIVATE_RESOURCE
