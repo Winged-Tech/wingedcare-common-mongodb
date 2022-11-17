@@ -39,6 +39,7 @@ version project_version
 
 ext {
     artifactId = 'wingedcare-common-mongo'
+    isReleaseVersion = !version.endsWith("SNAPSHOT")
 }
 
 sourceCompatibility=1.8
@@ -178,9 +179,9 @@ publishing {
             from components.java
 
             pom {
-                name = 'wingedcare common'
-                description = 'common for Java'
-                url = 'https://github.com/Winged-Tech/wingedcare-common'
+                name = 'wingedcare common mongodb'
+                description = 'common mongodb for Java'
+                url = 'https://github.com/Winged-Tech/wingedcare-common-mongodb'
                 licenses {
                     license {
                         name = 'MIT License'
@@ -196,9 +197,9 @@ publishing {
                     }
                 }
                 scm {
-                    connection = 'scm:git:https://github.com/Winged-Tech/wingedcare-common.git'
-                    developerConnection = "scm:git:https://github.com/Winged-Tech/wingedcare-common.git"
-                    url = 'https://github.com/Winged-Tech/wingedcare-common'
+                    connection = 'scm:git:https://github.com/Winged-Tech/wingedcare-common-mongodb.git'
+                    developerConnection = "scm:git:https://github.com/Winged-Tech/wingedcare-common-mongodb.git"
+                    url = 'https://github.com/Winged-Tech/wingedcare-common-mongodb'
                 }
             }
         }
@@ -214,7 +215,7 @@ publishing {
             }
             def snapshotsRepoUrl = "https://s01.oss.sonatype.org/content/repositories/snapshots"
             def releasesRepoUrl = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
-            url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
+            url = isReleaseVersion ? releasesRepoUrl : snapshotsRepoUrl
         }
     }
 }
