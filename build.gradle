@@ -128,7 +128,7 @@ dependencies {
         exclude group: "org.springframework.cloud", module: "spring-cloud-starter-kubernetes-ribbon"
     }
 //    api "com.github.dalet-oss:mongobee:1.0.4"
-    api "com.winged-tech:mongobee:1.0.2"
+    api "com.winged-tech:mongobee:1.0.3"
     api "org.springframework.boot:spring-boot-starter-data-mongodb"
     implementation "org.springframework.retry:spring-retry"
     annotationProcessor "org.mapstruct:mapstruct-processor:${mapstruct_version}"
