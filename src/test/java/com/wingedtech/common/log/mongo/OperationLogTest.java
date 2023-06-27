@@ -3,15 +3,10 @@ package com.wingedtech.common.log.mongo;
 
 import com.wingedtech.common.LoggingConfiguration;
 import com.wingedtech.common.log.annotation.OperationLogger;
-import com.wingedtech.common.mongo.log.service.IOperationLogService;
 import com.wingedtech.common.mongodb.autoconfigure.log.MongoOperationLogAutoConfiguration;
-import com.wingedtech.common.storage.ObjectStorageItem;
-import com.wingedtech.common.storage.StorageTestUtils;
 import lombok.extern.slf4j.Slf4j;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.data.mongo.MongoDataAutoConfiguration;
 import org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration;
 import org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration;

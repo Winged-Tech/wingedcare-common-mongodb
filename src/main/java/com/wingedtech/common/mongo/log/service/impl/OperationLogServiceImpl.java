@@ -1,13 +1,13 @@
 package com.wingedtech.common.mongo.log.service.impl;
 
+import com.wingedtech.common.log.service.OperationLogService;
 import com.wingedtech.common.log.service.dto.OperationLogDTO;
-import com.wingedtech.common.mongo.log.domain.OperationLog;
+import com.wingedtech.common.log.service.dto.OperationLogQueryDTO;
 import com.wingedtech.common.mongo.log.repository.OperationLogRepository;
-import com.wingedtech.common.mongo.log.service.IOperationLogService;
 import com.wingedtech.common.mongo.log.service.OperationLogMapper;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.BeanUtils;
-import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -17,7 +17,7 @@ import java.util.Optional;
  */
 @Service
 @AllArgsConstructor
-public class OperationLogServiceImpl implements IOperationLogService {
+public class OperationLogServiceImpl implements OperationLogService {
 
     private final OperationLogRepository repository;
     private final OperationLogMapper mapper;
@@ -42,4 +42,17 @@ public class OperationLogServiceImpl implements IOperationLogService {
     public Optional<OperationLogDTO> findOne(String id) {
         return repository.findById(id).map(mapper::toDto);
     }
+
+    /**
+     * 通过操作记录描述信息获取操作日志
+     *
+     * @param queryDTO 查询参数
+     * @param pageable 分页参数
+     * @return the data
+     */
+    @Override
+    public Page<OperationLogDTO> findByQuery(OperationLogQueryDTO queryDTO, Pageable pageable) {
+        return repository.findByQuery(queryDTO, pageable).map(mapper::toDto);
+    }
+
 }

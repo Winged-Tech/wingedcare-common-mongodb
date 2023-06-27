@@ -7,5 +7,5 @@ import org.springframework.data.mongodb.repository.MongoRepository;
  * @author taozhou
  * @date 2021/8/11
  */
-public interface OperationLogRepository extends MongoRepository<OperationLog, String> {
+public interface OperationLogRepository extends MongoRepository<OperationLog, String>, OperationLogExtendRepository {
 }

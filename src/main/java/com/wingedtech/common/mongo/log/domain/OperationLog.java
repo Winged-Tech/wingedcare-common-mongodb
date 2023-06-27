@@ -80,6 +80,7 @@ public class OperationLog implements Serializable {
     /**
      * 请求执行的方法描述
      */
+    @Indexed
     private String description;
 
     /**
