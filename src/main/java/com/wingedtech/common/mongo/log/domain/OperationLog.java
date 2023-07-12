@@ -28,6 +28,12 @@ public class OperationLog implements Serializable {
     private String createdBy;
 
     /**
+     * 创建人用户名
+     */
+    @Indexed
+    private String userName;
+
+    /**
      * 创建时间
      */
     private Instant createdTime;

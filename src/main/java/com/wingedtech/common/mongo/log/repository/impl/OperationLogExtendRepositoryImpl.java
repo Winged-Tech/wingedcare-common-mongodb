@@ -50,7 +50,10 @@ public class OperationLogExtendRepositoryImpl implements OperationLogExtendRepos
 
         if (StringUtils.isNotBlank(searchKey)) {
             Pattern searchPattern = Pattern.compile("^.*" + searchKey + ".*$", Pattern.CASE_INSENSITIVE);
-            criteria.and("description").regex(searchPattern);
+            criteria.orOperator(
+                Criteria.where("description").regex(searchPattern),
+                Criteria.where("userName").regex(searchPattern)
+            );
         }
 
         long count = mongoTemplate.count(Query.query(criteria), OperationLog.class);

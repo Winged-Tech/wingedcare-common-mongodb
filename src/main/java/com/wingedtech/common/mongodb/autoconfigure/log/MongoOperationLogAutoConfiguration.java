@@ -8,6 +8,7 @@ import com.wingedtech.common.mongo.log.service.OperationLogMapper;
 import com.wingedtech.common.mongo.log.service.impl.OperationLogServiceImpl;
 import com.wingedtech.common.service.logging.ObjectLogRepository;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
@@ -24,7 +25,7 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 public class MongoOperationLogAutoConfiguration {
 
     @Bean
-    public OperationLogService operationLogService(OperationLogRepository repository) {
-        return new OperationLogServiceImpl(repository, OperationLogMapper.INSTANCE);
+    public OperationLogService operationLogService(OperationLogRepository repository, ApplicationEventPublisher applicationEventPublisher) {
+        return new OperationLogServiceImpl(repository, OperationLogMapper.INSTANCE, applicationEventPublisher);
     }
 }

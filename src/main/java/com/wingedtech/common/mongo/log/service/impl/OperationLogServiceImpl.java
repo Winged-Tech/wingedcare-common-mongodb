@@ -3,9 +3,12 @@ package com.wingedtech.common.mongo.log.service.impl;
 import com.wingedtech.common.log.service.OperationLogService;
 import com.wingedtech.common.log.service.dto.OperationLogDTO;
 import com.wingedtech.common.log.service.dto.OperationLogQueryDTO;
+import com.wingedtech.common.mongo.log.event.OperationLogEvent;
 import com.wingedtech.common.mongo.log.repository.OperationLogRepository;
 import com.wingedtech.common.mongo.log.service.OperationLogMapper;
 import lombok.AllArgsConstructor;
+import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.context.ApplicationEventPublisherAware;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -17,10 +20,12 @@ import java.util.Optional;
  */
 @Service
 @AllArgsConstructor
-public class OperationLogServiceImpl implements OperationLogService {
+public class OperationLogServiceImpl implements OperationLogService, ApplicationEventPublisherAware {
 
     private final OperationLogRepository repository;
     private final OperationLogMapper mapper;
+    private ApplicationEventPublisher applicationEventPublisher;
+
 
     /**
      * 添加操作日志
@@ -29,6 +34,7 @@ public class OperationLogServiceImpl implements OperationLogService {
      */
     @Override
     public void save(OperationLogDTO operationLogDTO) {
+        applicationEventPublisher.publishEvent(new OperationLogEvent(this, operationLogDTO));
         repository.save(mapper.toEntity(operationLogDTO));
     }
 
@@ -55,4 +61,8 @@ public class OperationLogServiceImpl implements OperationLogService {
         return repository.findByQuery(queryDTO, pageable).map(mapper::toDto);
     }
 
+    @Override
+    public void setApplicationEventPublisher(ApplicationEventPublisher applicationEventPublisher) {
+        this.applicationEventPublisher = applicationEventPublisher;
+    }
 }
